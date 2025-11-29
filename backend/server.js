@@ -9,11 +9,6 @@ dotenv.config();
 const app = express();
 app.use(bodyParser.json());
 
-
-app.get("/", (req, res)=>{
-    res.send("hi")
-})
-
 app.use("/api/todos", todoRoutes)
 
 app.listen(5000, ()=>{

@@ -8,7 +8,8 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install && npm cache clean --force
+
 
 # Copy rest of the app
 COPY . .
@@ -17,4 +18,5 @@ COPY . .
 EXPOSE 5173
 
 # Start React app
-CMD ["npm", "run","dev"]
+CMD ["node", "backend/server.js"]
+

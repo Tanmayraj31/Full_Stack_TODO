@@ -37,6 +37,7 @@ pipeline {
                   --name backend \
                   --network mern-net \
                   -p 5000:5000 \
+                  -e MONGO_URI="mongodb+srv://<user>:<pass>@<cluster>/<db>?retryWrites=true&w=majority" \
                   todo-backend
 
                 # Run frontend

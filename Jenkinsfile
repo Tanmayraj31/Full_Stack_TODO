@@ -12,7 +12,7 @@ pipeline {
 
         stage('Build Backend Image') {
             steps {
-                sh 'docker build -t todo-backend ./backend'
+                sh 'docker build -t todo-backend .'
             }
         }
 

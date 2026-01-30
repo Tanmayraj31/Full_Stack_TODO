@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 app.use("/api/todos", todoRoutes)
 
-app.listen(5000, ()=>{
+app.listen(5000,"0.0.0.0", ()=>{
     connectDB();
     console.log("Server started")
 })

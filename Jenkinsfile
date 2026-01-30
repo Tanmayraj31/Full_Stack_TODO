@@ -1,0 +1,60 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/Tanmayraj31/Full_Stack_TODO'
+            }
+        }
+
+        stage('Build Backend Image') {
+            steps {
+                sh 'docker build -t todo-backend ./backend'
+            }
+        }
+
+        stage('Build Frontend Image') {
+            steps {
+                sh 'docker build -t todo-frontend ./frontend'
+            }
+        }
+
+        stage('Deploy Containers') {
+            steps {
+                sh '''
+                # Create network if not exists
+                docker network inspect mern-net || docker network create mern-net
+
+                # Stop & remove old containers
+                docker rm -f backend || true
+                docker rm -f frontend || true
+
+                # Run backend
+                docker run -d \
+                  --name backend \
+                  --network mern-net \
+                  -p 5000:5000 \
+                  todo-backend
+
+                # Run frontend
+                docker run -d \
+                  --name frontend \
+                  --network mern-net \
+                  -p 5173:5173 \
+                  todo-frontend
+                '''
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+

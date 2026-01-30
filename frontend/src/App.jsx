@@ -12,6 +12,7 @@ function App() {
   useEffect(() => {
     async function fetchTodos() {
       const response = await axios.get("/api/todos");
+
       setTodos(response.data);
     }
     fetchTodos();

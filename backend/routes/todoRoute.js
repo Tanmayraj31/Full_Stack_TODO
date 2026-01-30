@@ -1,5 +1,6 @@
 import express from 'express';
 import Todo from '../models/todoModel.js';
+console.log("🔥 todoRoute.js LOADED");
 
 
 const router = express.Router();
@@ -25,6 +26,9 @@ router.post("/", async (req, res)=>{
     }
 })
 
+router.get("/test", (req, res) => {
+  res.status(200).json({ ok: true });
+});
 
 //update a todo
 

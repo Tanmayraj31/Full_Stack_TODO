@@ -11,7 +11,7 @@ function App() {
   // Fetch todos on load
   useEffect(() => {
     async function fetchTodos() {
-      const response = await axios.get("http://15.207.106.86:5000/api/todos");
+      const response = await axios.get("/api/todos");
 
       setTodos(response.data);
     }

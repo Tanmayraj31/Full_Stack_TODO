@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    environmrnt{
+    environment{
         MONGO_URL = credentials('mongo_url')
     }
     stages {

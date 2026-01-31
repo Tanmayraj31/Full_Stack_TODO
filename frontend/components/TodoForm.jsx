@@ -24,7 +24,7 @@ function TodoForm({ onAddTodo }) {
         placeholder="What's need to be done?"
       />
 
-      <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+      <button className="bg-purple-700 text-white px-4 py-2 rounded-md hover:bg-blue-600">
         Add Task
       </button>
     </form>

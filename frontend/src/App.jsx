@@ -3,15 +3,17 @@ import axios from "axios";
 import TodoForm from "../components/TodoForm";
 import TodoList from "../components/TodoList";
 
-function App() {
+function App() 
+{
   const [todos, setTodos] = useState([]);
   const [editingTodo, setEditingTodo] = useState(null);
   const [editedText, setEditedText] = useState("");
+  const API = "http://15.207.106.86:5000";
 
   // Fetch todos on load
   useEffect(() => {
     async function fetchTodos() {
-      const response = await axios.get("/api/todos");
+      const response = await axios.get(`${API}/api/todos`);
 
       setTodos(response.data);
     }
@@ -20,13 +22,13 @@ function App() {
 
   // Add Todo
   const addTodo = async (newTodo) => {
-    const response = await axios.post("/api/todos", { text: newTodo });
+    const response = await axios.post(`${API}/api/todos`, { text: newTodo });
     setTodos([...todos, response.data]);
   };
 
   // Edit Todo
   const saveEdit = async (id) => {
-    const response = await axios.patch(`/api/todos/${id}`, {
+    const response = await axios.patch(`${API}/api/todos${id}`, {
       text: editedText,
     });
 
@@ -36,7 +38,7 @@ function App() {
 
   // Delete Todo
   const deleteTodo = async (id) => {
-    await axios.delete(`/api/todos/${id}`);
+    await axios.delete(`${API}/api/todos${id}`);
     setTodos(todos.filter((t) => t._id !== id));
   };
 
@@ -44,7 +46,7 @@ function App() {
   const toggleTodo = async (id) => {
     const todo = todos.find((t) => t._id === id);
 
-    const response = await axios.patch(`/api/todos/${id}`, {
+    const response = await axios.patch(`${API}/api/todos${id}`, {
       completed: !todo.completed,
     });
 

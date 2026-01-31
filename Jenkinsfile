@@ -37,7 +37,7 @@ pipeline {
                   --name backend \
                   --network mern-net \
                   -p 5000:5000 \
-                  -e MONGO_URI="mongodb+srv://admin:dbPassword%40123@cluster0.vqvv9xx.mongodb.net/MERN_TODO" \
+                  -e MONGO_URL="mongodb+srv://admin:dbPassword%40123@cluster0.vqvv9xx.mongodb.net/MERN_TODO" \
                   todo-backend
 
                 # Run frontend

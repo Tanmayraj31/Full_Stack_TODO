@@ -46,7 +46,7 @@ pipeline {
                 docker run -d \
                   --name frontend \
                   --network mern-net \
-                  -p 5173:5173 \
+                  -p 80:80 \
                   todo-frontend
                 '''
             }

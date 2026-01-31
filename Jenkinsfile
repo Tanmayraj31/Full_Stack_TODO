@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environmrnt{
+        MONGO_URL = credentials('mongo_url')
+    }
     stages {
 
         stage('Checkout Code') {
@@ -37,7 +39,7 @@ pipeline {
                   --name backend \
                   --network mern-net \
                   -p 5000:5000 \
-                  -e MONGO_URL="mongodb+srv://admin:dbPassword%40123@cluster0.vqvv9xx.mongodb.net/MERN_TODO" \
+                  -e MONGO_URL=$MONGO_URL \
                   todo-backend
 
                 # Run frontend

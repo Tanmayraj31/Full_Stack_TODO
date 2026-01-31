@@ -18,5 +18,6 @@ COPY . .
 EXPOSE 5173
 
 # Start React app
-CMD ["node", "backend/server.js"]
+CMD ["npm", "run","dev"]
+
 
